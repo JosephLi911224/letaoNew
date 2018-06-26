@@ -109,7 +109,7 @@ $(function(){
    * */
   $('[type="reset"]').click(function(){
     //不加true  resetForm(true)  只重置效验状态  传true都会重置   调用插件提供的方法
-      $('#form').data("bootstrapVaildator").resetForm();
+      $('#form').data("bootstrapValidator").resetForm();
   });
 
 
