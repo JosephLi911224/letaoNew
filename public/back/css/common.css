@@ -10,6 +10,10 @@ ul{
   list-style: none;
 }
 
+.red{
+  color: #A94442;
+}
+
 .body_bg {
   background-color: #222D32;
 }
@@ -34,7 +38,14 @@ ul{
   left: 0px;
   background-color: #222D32;
   z-index: 999;
+  transition: all 1s;
 }
+
+.lt_aside.hidemenu {
+  left: -180px;
+
+}
+
 
 .lt_aside .brand{
   height: 50px;
@@ -102,12 +113,15 @@ ul{
 .lt_main{
   height: 1000px;
   width: 100%;
-  background-color: pink;
+
   padding-left: 180px;
   padding-top: 50px;
+  transition: all 1s;
   }
 
-
+.lt_main.hidemenu{
+  padding-left: 0px;
+}
 
   .lt_topbar{
     height: 50px;
@@ -117,7 +131,14 @@ ul{
     left: 0px;
     background-color: #3C8DBC;
     padding-left: 180px;
+    transition: all 1s;
+    z-index: 666;
   }
+
+.lt_topbar.hidemenu{
+  padding-left: 0px;
+}
+
 
 .lt_topbar .icon_menu,
 .lt_topbar .icon_logout{
@@ -131,5 +152,13 @@ ul{
 
 .lt_main .breadcrumb{
   margin-top: 20px;
+
+}
+
+
+.echarts_1,
+.echarts_2{
+  width: 48%;
+  height: 400px;
 
 }
