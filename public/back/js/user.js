@@ -6,8 +6,12 @@
 $(function(){
 var currentPage =1;
   var pageSize =5;
-render();
- function render(){
+  //声明标记  ,标记当前选中项
+  var currentId;
+  var isDelete;
+
+  render();
+  function render(){
    $.ajax({
 
      url:"/user/queryUser",
@@ -18,7 +22,6 @@ render();
      type:"get",
      dataType:"json",
      success:function(info){
-       console.log(info);
        var htmlStr =template("tpl",info);
        console.log(htmlStr);
        $('tbody').html(htmlStr);
@@ -44,6 +47,34 @@ render();
    })
  }
 
+//2 启用  禁用功能
+$('tbody').on('click','.btn',function(){
+  $("#userModal").modal("show");
 
+    currentId = $(this).parent().data("id");
+  isDelete=$(this).hasClass("btn-danger") ? 0: 1;
+})
 
+  //点击确定按钮  更改用户状态   根据 isDelect  id  发送ajax请求
+  $('#submitBtn').click(function(){
+    console.log(currentId);
+    console.log(isDelete);
+    $.ajax({
+      type:"post",
+      url:"/user/updateUser",
+      data:{
+        id:currentId,
+        isDelete:isDelete
+      },
+      dataType:"json",
+      success:function(info){
+        //alert(1);
+        console.log(info);
+        //1关闭模态框
+        $('#userModal').modal("hide");
+        //2重新渲染
+        render();
+      }
+    })
+  })
 })
